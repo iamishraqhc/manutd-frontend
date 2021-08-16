@@ -35,7 +35,7 @@ export default class FetchData extends React.Component {
                 {this.state.player.map((item, key) => {
                   return (
                     <div key={key}>
-                      <img src={'https://' + item.image} width="500" alt={item.name}/><br />
+                      <img src={'https://' + item.image} width="250" alt={item.name}/><br />
                       <b>{item.name}</b><br />
                       <b>Jersey No:</b> {item.jersey}<br/>
                       <b>Country:</b> {item.country}
