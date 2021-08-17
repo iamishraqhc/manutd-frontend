@@ -1,4 +1,5 @@
 import React from 'react'
+import { Grid, Card, CardMedia, CardContent, Typography } from '@material-ui/core'
 
 export default class FetchData extends React.Component {
     state = {
@@ -20,6 +21,7 @@ export default class FetchData extends React.Component {
     }
     
     render() {
+
       if (this.state.loading) {
           return <div>loading...</div>
       }
@@ -31,18 +33,24 @@ export default class FetchData extends React.Component {
       return (
           <div>
               <h1>Manchester United Players</h1>
-  
-              {this.state.player.map((item, key) => {
-                return (
-                  <div key={key}>
-                    <img src={'https://' + item.image} width="250" alt={item.name}/><br />
-                    <b>{item.name}</b><br />
-                    <b>Jersey No:</b> {item.jersey}<br/>
-                    <b>Country:</b> {item.country}
-                    <br/> <br/>
-                  </div>
-                )
-              })}
+              <Grid container spacing={2} style={{paddingTop: "20px", paddingLeft: "50px", paddingRight: "50px"}}>
+                {this.state.player.map((item, key) => {
+                  return (
+                    
+                      <Grid item xs={3} key={key}>
+                        <Card>
+                          <CardMedia image={'https://' + item.image} style={{ width: "250px", height: "300px", margin: "auto" }} />
+                          <CardContent>
+                            <Typography><b>{item.name}</b></Typography>
+                            <Typography><b>Position:</b> {item.position}</Typography>
+                            <Typography><b>Jersey No:</b> {item.jersey}</Typography>
+                            <Typography><b>Country:</b> {item.country}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                  )
+                })}
+              </Grid>
           </div>
       )
     }
